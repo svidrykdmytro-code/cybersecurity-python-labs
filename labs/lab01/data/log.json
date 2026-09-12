@@ -1,0 +1,24 @@
+[
+    {
+        "event": "login",
+        "user": "sec_officer",
+        "result": "success",
+        "timestamp": "2026-09-11 16:06:00",
+        "args": [
+            "sec_officer",
+            "P@ssword123"
+        ],
+        "kwargs": {}
+    },
+    {
+        "event": "login",
+        "user": "sec_officer",
+        "result": "failure",
+        "timestamp": "2026-09-11 16:06:00",
+        "args": [
+            "sec_officer",
+            "WrongPassword"
+        ],
+        "kwargs": {}
+    }
+]
