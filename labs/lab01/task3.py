@@ -6,9 +6,11 @@ import hashlib
 import json
 import os
 import sys
-from datetime import datetime
+from datetime import datetime, timezone
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../")))
+sys.path.append(
+    os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"))
+)
 from shared.student import STUDENT_NAME, VARIANT_NUMBER
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
@@ -29,7 +31,7 @@ def log_event(func):
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
         username = args[0] if args else kwargs.get("username", "unknown")
-        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
         result = "failure"
 
         try:
@@ -92,12 +94,9 @@ def create_users(users_list: tuple[tuple[str, str], ...]):
 
 def read_users_db() -> list[dict[str, str]]:
     """Зчитує дані користувачів із CSV-файлу."""
-    users_db = []
     with open(CSV_PATH, mode="r", encoding="utf-8") as csvfile:
         reader = csv.DictReader(csvfile)
-        for row in reader:
-            users_db.append(row)
-    return users_db
+        return list(reader)
 
 
 @log_event
@@ -116,7 +115,9 @@ def login(username: str, password: str) -> bool:
 
 def run_task3():
     """Головна функція для запуску демонстрації третього завдання."""
-    print(f"=== Завдання 3 | Студент: {STUDENT_NAME}, Варіант: {VARIANT_NUMBER} ===")
+    print(
+        f"=== Завдання 3 | Студент: {STUDENT_NAME}, Варіант: {VARIANT_NUMBER} ==="
+    )
 
     users_to_register = (
         ("sec_officer", "P@ssword123"),

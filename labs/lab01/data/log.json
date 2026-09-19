@@ -20,5 +20,49 @@
             "WrongPassword"
         ],
         "kwargs": {}
+    },
+    {
+        "event": "login",
+        "user": "sec_officer",
+        "result": "success",
+        "timestamp": "2026-09-18 11:08:02",
+        "args": [
+            "sec_officer",
+            "P@ssword123"
+        ],
+        "kwargs": {}
+    },
+    {
+        "event": "login",
+        "user": "sec_officer",
+        "result": "failure",
+        "timestamp": "2026-09-18 11:08:03",
+        "args": [
+            "sec_officer",
+            "WrongPassword"
+        ],
+        "kwargs": {}
+    },
+    {
+        "event": "login",
+        "user": "sec_officer",
+        "result": "success",
+        "timestamp": "2026-09-19 09:21:30",
+        "args": [
+            "sec_officer",
+            "P@ssword123"
+        ],
+        "kwargs": {}
+    },
+    {
+        "event": "login",
+        "user": "sec_officer",
+        "result": "failure",
+        "timestamp": "2026-09-19 09:21:30",
+        "args": [
+            "sec_officer",
+            "WrongPassword"
+        ],
+        "kwargs": {}
     }
 ]
