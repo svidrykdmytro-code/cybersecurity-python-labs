@@ -1,0 +1,108 @@
+{
+  "generated_at": "2026-10-08T14:14:36+00:00",
+  "rules_file": "labs\\lab02\\data\\firewall_rules.json",
+  "conflict_check": true,
+  "summary": {
+    "total_rules": 14,
+    "unparsed_entries": 0,
+    "invalid_rules": 4,
+    "duplicate_rules": 1,
+    "conflicting_rules": 2,
+    "high_risk_rules": 3,
+    "clean_rules": 7
+  },
+  "unparsed_entries": [],
+  "invalid_rules": [
+    {
+      "id": 8,
+      "source": "999.10.1.1",
+      "destination": "10.10.0.11",
+      "port": "80",
+      "action": "ALLOW",
+      "errors": [
+        "invalid source '999.10.1.1'"
+      ]
+    },
+    {
+      "id": 9,
+      "source": "192.168.2.0/33",
+      "destination": "10.10.0.12",
+      "port": "443",
+      "action": "DENY",
+      "errors": [
+        "invalid source '192.168.2.0/33'"
+      ]
+    },
+    {
+      "id": 10,
+      "source": "192.168.3.15",
+      "destination": "300.1.1.1",
+      "port": "25",
+      "action": "ALLOW",
+      "errors": [
+        "invalid destination '300.1.1.1'"
+      ]
+    },
+    {
+      "id": 14,
+      "source": "10.20.30.40",
+      "destination": "192.168.50.1",
+      "port": "22",
+      "action": "BLOCK",
+      "errors": [
+        "invalid action 'BLOCK'"
+      ]
+    }
+  ],
+  "duplicates": [
+    {
+      "category": "DUPLICATE",
+      "rule_ids": [
+        2,
+        1
+      ],
+      "message": "Rule #2 (ALLOW 10.0.0.0/8 -> 192.168.10.10:443) duplicates Rule #1"
+    }
+  ],
+  "conflicts": [
+    {
+      "category": "CONFLICT",
+      "rule_ids": [
+        1,
+        3
+      ],
+      "message": "Rule #1 (ALLOW 10.0.0.0/8 -> 192.168.10.10:443) conflicts with Rule #3 (DENY 10.0.0.0/8 -> 192.168.10.10:443)"
+    },
+    {
+      "category": "CONFLICT",
+      "rule_ids": [
+        6,
+        7
+      ],
+      "message": "Rule #6 (ALLOW 172.16.5.10 -> 10.10.0.10:53) conflicts with Rule #7 (DENY 172.16.5.10 -> 10.10.0.10:53)"
+    }
+  ],
+  "high_risk": [
+    {
+      "category": "HIGH-RISK",
+      "rule_ids": [
+        4
+      ],
+      "message": "Rule #4: ALLOW Any -> 192.168.10.20:22 (SSH publicly accessible)"
+    },
+    {
+      "category": "HIGH-RISK",
+      "rule_ids": [
+        5
+      ],
+      "message": "Rule #5: ALLOW 192.168.1.0/24 -> 10.10.0.5:ANY (All ports open)"
+    },
+    {
+      "category": "HIGH-RISK",
+      "rule_ids": [
+        13
+      ],
+      "message": "Rule #13: ALLOW Any -> 192.168.10.99:ANY (Unlimited exposure)"
+    }
+  ]
+}
