@@ -5,6 +5,11 @@ from datetime import timedelta
 from .task1 import SESSION_TIMEOUT_SEC, Admin, AuditLog, Session, User, UserAccount
 from .task2 import add_arguments, run
 
+ADMINS = [
+    ("netadmin", "net_admin@lpnu.ua", ["edit_firewall", "read_logs"], "N3tAdm!n2026"),
+    ("auditor", "audit_team@lpnu.ua", ["read_logs"], "Aud1t#Secure"),
+]
+
 
 def section(title: str) -> None:
     print(f"\n=== {title} ===")
@@ -20,6 +25,13 @@ def demo() -> int:
     )
     print(user)
     print(admin)
+
+    section("Admins")
+    admins = [admin] + [
+        Admin(name, email, perms, password=pwd) for name, email, perms, pwd in ADMINS
+    ]
+    for number, item in enumerate(admins, start=1):
+        print(f"{number}. {item}")
 
     section("Login")
     account = UserAccount(user, audit)

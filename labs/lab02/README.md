@@ -58,6 +58,7 @@ python
 
 ```python
 from labs.lab02.task1 import Admin, UserAccount
+
 a = Admin("admin2", "admin_two@lpnu.ua", ["read_logs"], password="Pass#2026")
 print(a)
 a.grant_permission("edit_firewall")
